@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание СГАУ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Расписание СГАУ</h1>
+            <div class="search-row">
+                <input type="text" list="selectGroups"
+                    placeholder="Поиск по номеру группы или ФИО преподавателя..."
+                    id="inputTextGroup" class="search-input" />
+                <button id="darkModeToggle" class="dark-toggle" title="Тёмная тема">🌙</button>
+            </div>
+            <datalist id="selectGroups"></datalist>
+        </header>
+
+        <div class="info-box">
+            <div>
+                <h2 id="currentGroup">Выберите группу или преподавателя</h2>
+                <p>Начало учебного года: 01.09.2025</p>
+            </div>
+            <div>
+                <a href="#" class="download" id="downloadPdf">Скачать PDF</a>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item"><span class="color-box" style="background:#8cd28c"></span><span>Лекция</span></div>
+            <div class="legend-item"><span class="color-box" style="background:#b290dc"></span><span>Лабораторная</span></div>
+            <div class="legend-item"><span class="color-box" style="background:#749dcf"></span><span>Практика</span></div>
+            <div class="legend-item"><span class="color-box" style="background:#dfab89"></span><span>Экзамен</span></div>
+            <div class="legend-item"><span class="color-box" style="background:#f4e28c"></span><span>Зачёт</span></div>
+            <div class="legend-item"><span class="color-box" style="background:#a4f0f3"></span><span>Консультация</span></div>
+            <div class="legend-item"><span class="color-box" style="background:#d0cdcd"></span><span>Другое</span></div>
+        </div>
+
+        <div class="week-nav">
+            <button id="previousWeek" class="week-btn">&#8592; Предыдущая неделя</button>
+            <h3 id="currentWeek">Неделя 31</h3>
+            <button id="nextWeek" class="week-btn">Следующая неделя &#8594;</button>
+        </div>
+
+        <div id="scheduleWrapper">
+            <table id="schedule"></table>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
